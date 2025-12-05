@@ -6,12 +6,14 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import EnrolledCourses from './pages/dashboard/EnrolledCourses';
+import Progress from './pages/dashboard/Progress';
 import AddCourse from './pages/dashboard/AddCourse';
 import MyCourses from './pages/dashboard/MyCourses';
 import UpdateCourse from './pages/dashboard/UpdateCourse';
 import NotFound from './pages/NotFound';
 import MainLayout from './layouts/MainLayout';
 import PrivateRoute from './components/PrivateRoute';
+
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,10 @@ const router = createBrowserRouter([
             element: <EnrolledCourses />,
           },
           {
+            path: 'progress',
+            element: <Progress />,
+          },
+          {
             path: 'add-course',
             element: <AddCourse />,
           },
@@ -67,6 +73,7 @@ const router = createBrowserRouter([
             element: <UpdateCourse />,
           },
         ],
+
       },
       {
         path: '*',

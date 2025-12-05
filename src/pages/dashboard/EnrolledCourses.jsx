@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
+import CertificateDownloadButton from '../../components/CertificateDownloadButton';
 import toast from 'react-hot-toast';
+
 
 function EnrolledCourses() {
     const { user } = useAuth();
@@ -143,13 +145,20 @@ function EnrolledCourses() {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex gap-2">
+                            <div className="space-y-2">
                                 <Link
                                     to={`/courses/${enrollment.course._id}`}
-                                    className="flex-1 text-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all duration-300"
+                                    className="block text-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all duration-300"
                                 >
                                     Continue Learning
                                 </Link>
+                                <CertificateDownloadButton
+                                    studentName={user?.displayName || user?.email}
+                                    courseName={enrollment.course.title}
+                                    instructorName={enrollment.course.instructorName}
+                                    completionDate={enrollment.enrolledAt}
+                                    courseId={enrollment.course._id}
+                                />
                             </div>
                         </div>
                     </motion.div>
