@@ -209,6 +209,169 @@ function Home() {
                     )}
                 </div>
             </section>
+
+            {/* Why Choose Us Section */}
+            <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
+                <div className="container mx-auto px-4 lg:px-8">
+                    {/* Section Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                            Why Choose LearnHub?
+                        </h2>
+                        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                            Join thousands of learners who trust us to help them achieve their goals
+                        </p>
+                    </motion.div>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            {
+                                icon: "🎓",
+                                title: "Expert Instructors",
+                                description: "Learn from industry professionals with years of real-world experience"
+                            },
+                            {
+                                icon: "⚡",
+                                title: "Flexible Learning",
+                                description: "Study at your own pace, anytime and anywhere that suits you best"
+                            },
+                            {
+                                icon: "🏆",
+                                title: "Quality Content",
+                                description: "Access high-quality, up-to-date course materials and resources"
+                            },
+                            {
+                                icon: "💼",
+                                title: "Career Growth",
+                                description: "Gain skills that employers value and advance your career"
+                            }
+                        ].map((feature, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
+                            >
+                                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    {feature.icon}
+                                </div>
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-400">
+                                    {feature.description}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Top Instructors Section */}
+            <section className="py-20 bg-white dark:bg-gray-900">
+                <div className="container mx-auto px-4 lg:px-8">
+                    {/* Section Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                            Meet Our Top Instructors
+                        </h2>
+                        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                            Learn from the best in the industry who are passionate about teaching
+                        </p>
+                    </motion.div>
+
+                    {/* Instructors Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            {
+                                name: "Dr. Sarah Johnson",
+                                role: "Data Science Expert",
+                                image: "https://randomuser.me/api/portraits/women/44.jpg",
+                                courses: "15 Courses",
+                                students: "12K+ Students"
+                            },
+                            {
+                                name: "Michael Chen",
+                                role: "Web Development Pro",
+                                image: "https://randomuser.me/api/portraits/men/32.jpg",
+                                courses: "22 Courses",
+                                students: "18K+ Students"
+                            },
+                            {
+                                name: "Emily Rodriguez",
+                                role: "UI/UX Designer",
+                                image: "https://randomuser.me/api/portraits/women/68.jpg",
+                                courses: "18 Courses",
+                                students: "15K+ Students"
+                            },
+                            {
+                                name: "David Kim",
+                                role: "Business Strategy",
+                                image: "https://randomuser.me/api/portraits/men/46.jpg",
+                                courses: "12 Courses",
+                                students: "10K+ Students"
+                            }
+                        ].map((instructor, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
+                            >
+                                {/* Instructor Image */}
+                                <div className="relative overflow-hidden h-64">
+                                    <img
+                                        src={instructor.image}
+                                        alt={instructor.name}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                </div>
+
+                                {/* Instructor Info */}
+                                <div className="p-6 text-center">
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                        {instructor.name}
+                                    </h3>
+                                    <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">
+                                        {instructor.role}
+                                    </p>
+                                    <div className="flex justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+                                        <div>
+                                            <div className="font-semibold text-gray-900 dark:text-white">
+                                                {instructor.courses}
+                                            </div>
+                                        </div>
+                                        <div className="border-l border-gray-300 dark:border-gray-600" />
+                                        <div>
+                                            <div className="font-semibold text-gray-900 dark:text-white">
+                                                {instructor.students}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }
