@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 function Layout() {
     return (
         <div className="min-h-screen flex flex-col">
-            {/* Navbar will go here */}
+            {/* Navbar */}
             <nav className="bg-blue-600 text-white p-4">
                 <div className="container mx-auto">
                     <h2 className="text-xl font-bold">Navbar Placeholder</h2>
@@ -15,7 +15,7 @@ function Layout() {
                 <Outlet />
             </main>
 
-            {/* Footer will go here */}
+            {/* Footer */}
             <footer className="bg-gray-800 text-white p-4 mt-auto">
                 <div className="container mx-auto text-center">
                     <p>Footer Placeholder</p>
