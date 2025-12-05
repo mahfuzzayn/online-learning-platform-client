@@ -11,7 +11,7 @@ function Courses() {
     const [categories, setCategories] = useState(['All']);
 
     useEffect(() => {
-        document.title = 'Online Learning | Courses';
+        document.title = 'Hiko | Courses';
         fetchCourses();
     }, []);
 

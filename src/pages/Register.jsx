@@ -14,7 +14,7 @@ function Register() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.title = 'Online Learning | Register';
+        document.title = 'Hiko | Register';
     }, []);
 
 

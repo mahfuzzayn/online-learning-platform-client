@@ -15,7 +15,7 @@ function Login() {
     const from = location.state?.from?.pathname || '/';
 
     useEffect(() => {
-        document.title = 'Online Learning | Login';
+        document.title = 'Hiko | Login';
     }, []);
 
 

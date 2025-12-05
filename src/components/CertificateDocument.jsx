@@ -133,7 +133,7 @@ const CertificateDocument = ({ studentName, courseName, instructorName, completi
                         <Text style={styles.studentName}>{studentName}</Text>
 
                         <Text style={styles.completionText}>
-                            For successfully completing the online course
+                            For successfully completing the hiko course
                         </Text>
 
                         <Text style={styles.courseName}>{courseName}</Text>

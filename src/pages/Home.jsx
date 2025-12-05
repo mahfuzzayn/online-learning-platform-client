@@ -9,7 +9,7 @@ function Home() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'Online Learning | Home';
+        document.title = 'Hiko | Home';
         fetchFeaturedCourses();
     }, []);
 
@@ -82,7 +82,7 @@ function Home() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-blue-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent leading-tight"
                         >
-                            Transform Your Future with Online Learning
+                            Transform Your Future with Hiko
                         </motion.h1>
 
                         {/* Subheading */}
@@ -127,7 +127,7 @@ function Home() {
                         >
                             <div className="text-center">
                                 <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">1000+</div>
-                                <div className="text-gray-600 dark:text-gray-400">Online Courses</div>
+                                <div className="text-gray-600 dark:text-gray-400">Hiko Courses</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">50K+</div>

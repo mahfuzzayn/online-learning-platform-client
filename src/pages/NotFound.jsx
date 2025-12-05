@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function NotFound() {
     useEffect(() => {
-        document.title = 'Online Learning | 404 Not Found';
+        document.title = 'Hiko | 404 Not Found';
     }, []);
 
     return (

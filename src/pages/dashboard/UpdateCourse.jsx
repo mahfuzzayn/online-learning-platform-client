@@ -25,7 +25,7 @@ function UpdateCourse() {
     });
 
     useEffect(() => {
-        document.title = 'Online Learning | Update Course';
+        document.title = 'Hiko | Update Course';
         fetchCourseData();
     }, [id]);
 

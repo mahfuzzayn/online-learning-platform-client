@@ -22,7 +22,7 @@ function AddCourse() {
     });
 
     useEffect(() => {
-        document.title = 'Online Learning | Add Course';
+        document.title = 'Hiko | Add Course';
     }, []);
 
     const categories = [

@@ -53,7 +53,7 @@ function CourseDetails() {
 
     useEffect(() => {
         if (course) {
-            document.title = `Online Learning | ${course.title}`;
+            document.title = `Hiko | ${course.title}`;
         }
     }, [course]);
 

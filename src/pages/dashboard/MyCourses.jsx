@@ -13,7 +13,7 @@ function MyCourses() {
     const [deleteModal, setDeleteModal] = useState({ isOpen: false, course: null });
 
     useEffect(() => {
-        document.title = 'Online Learning | My Courses';
+        document.title = 'Hiko | My Courses';
         if (user?.email) {
             fetchMyCourses();
         }

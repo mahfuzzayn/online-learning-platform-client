@@ -11,7 +11,7 @@ function Progress() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'Online Learning | Progress';
+        document.title = 'Hiko | Progress';
         fetchData();
     }, [user]);
 

@@ -9,7 +9,7 @@ function Dashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
-        document.title = 'Online Learning | Dashboard';
+        document.title = 'Hiko | Dashboard';
         // Redirect to enrolled courses by default
         if (window.location.pathname === '/dashboard') {
             navigate('/dashboard/enrolled');

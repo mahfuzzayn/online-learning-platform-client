@@ -13,7 +13,7 @@ function EnrolledCourses() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'Online Learning | My Enrolled Courses';
+        document.title = 'Hiko | My Enrolled Courses';
         if (user?.email) {
             fetchEnrollments();
         }
