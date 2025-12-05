@@ -17,8 +17,9 @@ function Home() {
         try {
             setLoading(true);
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/courses`);
+            const coursesData = response.data.data || [];
             // Filter for featured courses and limit to 6
-            const featured = response.data.filter(course => course.isFeatured).slice(0, 6);
+            const featured = coursesData.filter(course => course.isFeatured).slice(0, 6);
             setFeaturedCourses(featured);
         } catch (error) {
             console.error('Error fetching featured courses:', error);
