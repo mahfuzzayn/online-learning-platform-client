@@ -17,20 +17,18 @@ export const ThemeProvider = ({ children }) => {
         if (savedTheme) {
             return savedTheme;
         }
-        // Check system preference
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-        }
+        // Default to light theme
         return 'light';
     });
 
     useEffect(() => {
         const root = window.document.documentElement;
 
+        // Remove both classes first to ensure clean state
+        root.classList.remove('dark', 'light');
+
         if (theme === 'dark') {
             root.classList.add('dark');
-        } else {
-            root.classList.remove('dark');
         }
 
         // Save to localStorage

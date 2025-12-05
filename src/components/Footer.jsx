@@ -4,35 +4,35 @@ function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-50 border-t border-gray-200">
+        <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
             <div className="container mx-auto px-4 lg:px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Brand Section */}
                     <div className="md:col-span-1">
-                        <Link to="/" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200">
+                        <Link to="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                             LearnHub
                         </Link>
-                        <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+                        <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                             Empowering learners worldwide with quality education and expert-led courses.
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 mb-4">Quick Links</h3>
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h3>
                         <ul className="space-y-2.5">
                             <li>
-                                <Link to="/" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                                <Link to="/" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                     Home
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/courses" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                                <Link to="/courses" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                     Courses
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/dashboard" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                                <Link to="/dashboard" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                     Dashboard
                                 </Link>
                             </li>
@@ -41,20 +41,20 @@ function Footer() {
 
                     {/* Support */}
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 mb-4">Support</h3>
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Support</h3>
                         <ul className="space-y-2.5">
                             <li>
-                                <a href="#" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                                <a href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                     Help Center
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                                <a href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                     Contact Us
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                                <a href="#" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                     Privacy Policy
                                 </a>
                             </li>
@@ -63,12 +63,12 @@ function Footer() {
 
                     {/* Social Links */}
                     <div>
-                        <h3 className="text-sm font-semibold text-gray-900 mb-4">Follow Us</h3>
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h3>
                         <div className="flex space-x-4">
                             {/* Facebook */}
                             <a
                                 href="#"
-                                className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-200 text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-200"
+                                className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-200"
                                 aria-label="Facebook"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@ function Footer() {
                             {/* Twitter/X */}
                             <a
                                 href="#"
-                                className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-200 text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-200"
+                                className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-200"
                                 aria-label="Twitter"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@ function Footer() {
                             {/* LinkedIn */}
                             <a
                                 href="#"
-                                className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-200 text-gray-600 hover:bg-blue-600 hover:text-white transition-all duration-200"
+                                className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-200"
                                 aria-label="LinkedIn"
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -100,8 +100,8 @@ function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-12 pt-8 border-t border-gray-200">
-                    <p className="text-sm text-gray-600 text-center">
+                <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
                         © {currentYear} LearnHub. All rights reserved.
                     </p>
                 </div>
