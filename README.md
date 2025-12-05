@@ -1,6 +1,6 @@
-# Online Learning Platform - Client
+# Hiko - Client
 
-A modern, full-featured online learning platform built with React, Vite, and Tailwind CSS.
+A modern, full-featured Hiko built with React, Vite, and Tailwind CSS.
 
 ![React](https://img.shields.io/badge/React-18.3.1-blue)
 ![Vite](https://img.shields.io/badge/Vite-6.0.1-purple)
@@ -61,8 +61,8 @@ A modern, full-featured online learning platform built with React, Vite, and Tai
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/mahfuzzayn/online-learning-platform-client.git
-cd online-learning-platform-client
+git clone https://github.com/mahfuzzayn/hiko.git
+cd hiko
 ```
 
 2. **Install dependencies**
