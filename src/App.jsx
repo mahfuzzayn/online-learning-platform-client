@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import EnrolledCourses from './pages/dashboard/EnrolledCourses';
 import AddCourse from './pages/dashboard/AddCourse';
 import MyCourses from './pages/dashboard/MyCourses';
+import UpdateCourse from './pages/dashboard/UpdateCourse';
 import NotFound from './pages/NotFound';
 import MainLayout from './layouts/MainLayout';
 import PrivateRoute from './components/PrivateRoute';
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
           {
             path: 'my-courses',
             element: <MyCourses />,
+          },
+          {
+            path: 'update-course/:id',
+            element: <UpdateCourse />,
           },
         ],
       },
