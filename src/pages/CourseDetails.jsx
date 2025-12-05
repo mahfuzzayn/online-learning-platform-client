@@ -3,6 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
+import StarRating from '../components/StarRating';
+import ReviewForm from '../components/ReviewForm';
+import ReviewsList from '../components/ReviewsList';
 import toast from 'react-hot-toast';
 
 function CourseDetails() {
@@ -12,10 +15,41 @@ function CourseDetails() {
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
     const [enrolling, setEnrolling] = useState(false);
+    const [reviews, setReviews] = useState([]);
+    const [showReviewForm, setShowReviewForm] = useState(false);
+
 
     useEffect(() => {
         fetchCourseDetails();
+        // Initialize sample reviews (replace with API call in production)
+        setReviews([
+            {
+                id: '1',
+                userName: 'Sarah Johnson',
+                userPhoto: 'https://ui-avatars.com/api/?name=Sarah+Johnson&background=3b82f6&color=fff',
+                rating: 5,
+                comment: 'Excellent course! The instructor explains everything clearly and the hands-on projects really helped me understand the concepts. Highly recommended!',
+                createdAt: '2024-11-15T10:30:00Z'
+            },
+            {
+                id: '2',
+                userName: 'Michael Chen',
+                userPhoto: 'https://ui-avatars.com/api/?name=Michael+Chen&background=10b981&color=fff',
+                rating: 4,
+                comment: 'Great content and well-structured. I learned a lot from this course. The only improvement would be to add more advanced topics.',
+                createdAt: '2024-11-20T14:45:00Z'
+            },
+            {
+                id: '3',
+                userName: 'Emily Davis',
+                userPhoto: 'https://ui-avatars.com/api/?name=Emily+Davis&background=f59e0b&color=fff',
+                rating: 5,
+                comment: 'This course exceeded my expectations! The practical examples and real-world applications made learning enjoyable and effective.',
+                createdAt: '2024-12-01T09:15:00Z'
+            }
+        ]);
     }, [id]);
+
 
     useEffect(() => {
         if (course) {
@@ -300,6 +334,53 @@ function CourseDetails() {
                                 </div>
                             </motion.div>
                         </div>
+                    </div>
+
+                    {/* Reviews & Ratings Section */}
+                    <div className="mt-16">
+                        <div className="flex items-center justify-between mb-8">
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                                    Reviews & Ratings
+                                </h2>
+                                {reviews.length > 0 && (
+                                    <div className="flex items-center gap-4">
+                                        <StarRating
+                                            rating={reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length}
+                                            readonly
+                                            size="md"
+                                        />
+                                        <span className="text-gray-600 dark:text-gray-400">
+                                            ({reviews.length} {reviews.length === 1 ? 'review' : 'reviews'})
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
+                            {user && (
+                                <button
+                                    onClick={() => setShowReviewForm(!showReviewForm)}
+                                    className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
+                                >
+                                    {showReviewForm ? 'Cancel' : 'Write a Review'}
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Review Form */}
+                        {showReviewForm && user && (
+                            <div className="mb-8">
+                                <ReviewForm
+                                    courseId={id}
+                                    onReviewSubmitted={(newReview) => {
+                                        setReviews([newReview, ...reviews]);
+                                        setShowReviewForm(false);
+                                    }}
+                                />
+                            </div>
+                        )}
+
+                        {/* Reviews List */}
+                        <ReviewsList reviews={reviews} />
                     </div>
                 </div>
             </section>
