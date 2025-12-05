@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -10,6 +10,7 @@ function MyCourses() {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [deletingId, setDeletingId] = useState(null);
+    const [deleteModal, setDeleteModal] = useState({ isOpen: false, course: null });
 
     useEffect(() => {
         document.title = 'Online Learning | My Courses';
@@ -34,22 +35,27 @@ function MyCourses() {
         }
     };
 
-    const handleDelete = async (courseId, courseTitle) => {
-        // Confirmation dialog
-        const confirmed = window.confirm(
-            `Are you sure you want to delete "${courseTitle}"?\n\nThis action cannot be undone.`
-        );
+    const openDeleteModal = (course) => {
+        setDeleteModal({ isOpen: true, course });
+    };
 
-        if (!confirmed) return;
+    const closeDeleteModal = () => {
+        setDeleteModal({ isOpen: false, course: null });
+    };
+
+    const handleDelete = async () => {
+        const course = deleteModal.course;
+        if (!course) return;
 
         try {
-            setDeletingId(courseId);
-            await axios.delete(`${import.meta.env.VITE_API_URL}/courses/${courseId}`);
+            setDeletingId(course._id);
+            await axios.delete(`${import.meta.env.VITE_API_URL}/courses/${course._id}`);
 
             // Update UI by removing the deleted course
-            setCourses(prevCourses => prevCourses.filter(course => course._id !== courseId));
+            setCourses(prevCourses => prevCourses.filter(c => c._id !== course._id));
 
             toast.success('Course deleted successfully!');
+            closeDeleteModal();
         } catch (error) {
             console.error('Error deleting course:', error);
             toast.error('Failed to delete course. Please try again.');
@@ -172,7 +178,7 @@ function MyCourses() {
                                     </Link>
                                 </div>
                                 <button
-                                    onClick={() => handleDelete(course._id, course.title)}
+                                    onClick={() => openDeleteModal(course)}
                                     disabled={deletingId === course._id}
                                     className="w-full px-3 py-2 bg-red-600 text-white rounded-lg font-semibold text-sm hover:bg-red-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
@@ -183,6 +189,71 @@ function MyCourses() {
                     </motion.div>
                 ))}
             </div>
+
+            {/* Delete Confirmation Modal */}
+            <AnimatePresence>
+                {deleteModal.isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                        onClick={closeDeleteModal}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ type: 'spring', duration: 0.3 }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-6"
+                        >
+                            {/* Icon */}
+                            <div className="flex justify-center mb-4">
+                                <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                                    <svg className="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            {/* Title */}
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
+                                Delete Course?
+                            </h3>
+
+                            {/* Message */}
+                            <p className="text-gray-600 dark:text-gray-400 text-center mb-2">
+                                Are you sure you want to delete
+                            </p>
+                            <p className="text-gray-900 dark:text-white font-semibold text-center mb-4">
+                                "{deleteModal.course?.title}"
+                            </p>
+                            <p className="text-sm text-red-600 dark:text-red-400 text-center mb-6">
+                                This action cannot be undone.
+                            </p>
+
+                            {/* Buttons */}
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={closeDeleteModal}
+                                    disabled={deletingId}
+                                    className="flex-1 px-4 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleDelete}
+                                    disabled={deletingId}
+                                    className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {deletingId ? 'Deleting...' : 'Delete'}
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
