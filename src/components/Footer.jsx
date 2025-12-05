@@ -10,7 +10,7 @@ function Footer() {
                     {/* Brand Section */}
                     <div className="md:col-span-1">
                         <Link to="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-                            LearnHub
+                            Hiko
                         </Link>
                         <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                             Empowering learners worldwide with quality education and expert-led courses.
@@ -102,7 +102,7 @@ function Footer() {
                 {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                     <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                        © {currentYear} LearnHub. All rights reserved.
+                        © {currentYear} Hiko. All rights reserved.
                     </p>
                 </div>
             </div>
