@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -12,6 +12,11 @@ function Register() {
 
     const { createUser, googleLogin } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = 'Online Learning | Register';
+    }, []);
+
 
     const handleRegister = async (e) => {
         e.preventDefault();

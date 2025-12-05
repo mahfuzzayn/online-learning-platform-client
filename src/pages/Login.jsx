@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -13,6 +13,11 @@ function Login() {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
+
+    useEffect(() => {
+        document.title = 'Online Learning | Login';
+    }, []);
+
 
     const handleEmailLogin = async (e) => {
         e.preventDefault();
