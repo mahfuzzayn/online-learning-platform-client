@@ -82,7 +82,7 @@ function EnrolledCourses() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {enrollments.map((enrollment, index) => (
                     <motion.div
-                        key={enrollment._id}
+                        key={enrollment.enrollmentId}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -91,8 +91,8 @@ function EnrolledCourses() {
                         {/* Course Image */}
                         <div className="relative overflow-hidden h-40">
                             <img
-                                src={enrollment.courseImage}
-                                alt={enrollment.courseTitle}
+                                src={enrollment.course.image}
+                                alt={enrollment.course.title}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -103,13 +103,13 @@ function EnrolledCourses() {
                             {/* Category Badge */}
                             <div className="mb-3">
                                 <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-full text-xs font-semibold">
-                                    {enrollment.courseCategory}
+                                    {enrollment.course.category}
                                 </span>
                             </div>
 
                             {/* Course Title */}
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
-                                {enrollment.courseTitle}
+                                {enrollment.course.title}
                             </h3>
 
                             {/* Instructor */}
@@ -117,7 +117,7 @@ function EnrolledCourses() {
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
-                                <span>{enrollment.instructorName}</span>
+                                <span>{enrollment.course.instructorName}</span>
                             </div>
 
                             {/* Course Meta */}
@@ -126,10 +126,10 @@ function EnrolledCourses() {
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <span>{enrollment.courseDuration}</span>
+                                    <span>{enrollment.course.duration}</span>
                                 </div>
                                 <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
-                                    ${enrollment.coursePrice}
+                                    ${enrollment.course.price}
                                 </div>
                             </div>
 
@@ -145,7 +145,7 @@ function EnrolledCourses() {
                             {/* Action Buttons */}
                             <div className="flex gap-2">
                                 <Link
-                                    to={`/courses/${enrollment.courseId}`}
+                                    to={`/courses/${enrollment.course._id}`}
                                     className="flex-1 text-center px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold text-sm hover:bg-blue-700 transition-all duration-300"
                                 >
                                     Continue Learning
