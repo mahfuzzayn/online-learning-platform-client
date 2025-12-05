@@ -1,11 +1,31 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import CourseCard from '../components/CourseCard';
 
 function Home() {
+    const [featuredCourses, setFeaturedCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         document.title = 'Online Learning | Home';
+        fetchFeaturedCourses();
     }, []);
+
+    const fetchFeaturedCourses = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/courses`);
+            // Filter for featured courses and limit to 6
+            const featured = response.data.filter(course => course.isFeatured).slice(0, 6);
+            setFeaturedCourses(featured);
+        } catch (error) {
+            console.error('Error fetching featured courses:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div>
@@ -135,6 +155,59 @@ function Home() {
                         <div className="w-1.5 h-3 bg-gray-400 dark:bg-gray-600 rounded-full" />
                     </motion.div>
                 </motion.div>
+            </section>
+
+            {/* Featured Courses Section */}
+            <section className="py-20 bg-white dark:bg-gray-900">
+                <div className="container mx-auto px-4 lg:px-8">
+                    {/* Section Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                            Featured Courses
+                        </h2>
+                        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                            Explore our handpicked selection of top-rated courses designed to help you master new skills
+                        </p>
+                    </motion.div>
+
+                    {/* Loading State */}
+                    {loading ? (
+                        <div className="flex justify-center items-center py-20">
+                            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600"></div>
+                        </div>
+                    ) : (
+                        <>
+                            {/* Courses Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                                {featuredCourses.map((course, index) => (
+                                    <CourseCard key={course._id} course={course} index={index} />
+                                ))}
+                            </div>
+
+                            {/* View All Courses Button */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                                className="text-center"
+                            >
+                                <Link
+                                    to="/courses"
+                                    className="inline-block px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/50 hover:-translate-y-1"
+                                >
+                                    View All Courses →
+                                </Link>
+                            </motion.div>
+                        </>
+                    )}
+                </div>
             </section>
         </div>
     );
